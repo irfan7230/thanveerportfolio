@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanveer Ahamed N - VLSI & Digital Systems</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for professional graphics --><script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Base Light Theme - White Background, High Contrast */
+        :root {
+            --color-primary-navy: #001F54; /* Deep Navy Blue (Headers, Primary CTA) */
+            --color-secondary-teal: #00A896; /* Electric Teal (Accents, Links) */
+            --color-text-dark: #333333;
+            --color-background-light: #FFFFFF;
+            --color-section-bg: #F9FAFB;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-background-light);
+            color: var(--color-text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Header Transition for Impressiveness */
+        .header-title {
+            transition: color 0.4s ease, transform 0.4s ease;
+        }
+        .header-title:hover {
+            color: var(--color-secondary-teal);
+            transform: scale(1.02);
+        }
+
+        /* Nav Link Hover Effect (Teal Underline) */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-secondary-teal);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link:hover {
+            color: var(--color-secondary-teal);
+        }
+
+        /* Project Card Hover Animation (Subtle 3D lift and shadow) */
+        .project-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 31, 84, 0.08); /* Subtle Navy Shadow */
+            border: 1px solid rgba(0, 0, 0, 0.05); /* Light border for definition */
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 168, 150, 0.2); /* Teal Hover Shadow */
+            border-color: var(--color-secondary-teal);
+        }
+
+        /* Primary CTA Button Style */
+        .cta-primary {
+            background-color: var(--color-primary-navy);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cta-primary:hover {
+            background-color: var(--color-secondary-teal);
+            transform: translateY(-2px);
+        }
+
+        /* Section Heading Underline */
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-secondary-teal);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Detailed Project Section Styling */
+        .detailed-project {
+            display: none; /* Hidden by default */
+            margin-top: 4rem;
+            padding: 2rem;
+            background-color: var(--color-background-light);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 31, 84, 0.1);
+        }
+        .detailed-project.active {
+            display: block;
+        }
+        .project-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+
+        /* Mobile Layout Adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .md\\:flex {
+                flex-direction: column;
+            }
+            .md\\:order-last {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation --><header class="sticky top-0 z-50 bg-white shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Updated Header Presentation: Full Name, Customized -->
+            <div class="header-title text-3xl font-extrabold text-[--color-primary-navy]">
+                THANVEER AHAMED <span class="text-[--color-secondary-teal] text-lg font-medium">/ VLSI.E</span>
+            </div>
+            <!-- Navigation Links (RESUME REMOVED) -->
+            <div class="space-x-6 font-medium hidden md:flex">
+                <a href="#home" class="nav-link text-gray-700">Home</a>
+                <a href="#about" class="nav-link text-gray-700">About & Skills</a>
+                <a href="#projects" class="nav-link text-gray-700">Projects</a>
+                <a href="#certs" class="nav-link text-gray-700">Certifications</a>
+                <a href="#contact" class="nav-link text-gray-700">Contact</a>
+            </div>
+            <a href="#contact" class="px-4 py-2 bg-[--color-secondary-teal] text-white rounded-lg text-sm font-semibold md:hidden">
+                Hire Me
+            </a>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+
+        <!-- 1. HOMEPAGE: The Gateway --><section id="home" class="py-24 md:py-32 px-4 bg-white">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- Text Content --><div class="md:w-3/5 space-y-6 text-center md:text-left">
+                    <p class="text-xl text-[--color-secondary-teal] font-semibold uppercase tracking-widest">B.E. ECE Specialist</p>
+                    <h1 class="hero-title text-6xl md:text-7xl font-extrabold leading-tight text-[--color-primary-navy]">
+                        Thanveer Ahamed N
+                    </h1>
+                    <h2 class="text-3xl font-light text-gray-600">
+                        Synthesizing Digital Logic into High-Performance Silicon.
+                    </h2>
+                    <p class="text-lg text-gray-500 max-w-2xl mx-auto md:mx-0">
+                        I am a passionate **VLSI Engineer** focused on **RTL coding (Verilog/SystemVerilog)**, **Functional Verification**, and implementing **low-power embedded systems**. Ready for innovative challenges.
+                    </p>
+                    <div class="flex justify-center md:justify-start pt-6 gap-4">
+                        <a href="#projects" class="cta-primary text-white font-bold py-3 px-8 rounded-lg text-lg shadow-xl">
+                            View My Modules
+                        </a>
+                        <a href="mailto:thanveera012@gmail.com" class="px-6 py-3 border-2 border-[--color-secondary-teal] text-[--color-secondary-teal] font-bold rounded-lg text-lg hover:bg-gray-100 transition duration-300">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+                <!-- Image/Visual --><div class="md:w-2/5 flex justify-center">
+                    <div class="w-72 h-72 rounded-full overflow-hidden border-4 border-[--color-primary-navy] flex items-center justify-center shadow-2xl shadow-[--color-secondary-teal]/20">
+                        <!-- Actual Image with Fallback -->
+                        <img src="uploaded:IMG_20250706_205357_211.webp-87838d80-b8f9-4102-9723-d337a856ee0a" onerror="this.onerror=null; this.src='https://placehold.co/300x300/CCCCCC/333333?text=Profile+Image';" alt="Thanveer Ahamed N" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT SECTION: The Specifications --><section id="about" class="py-20 px-4 bg-[--color-section-bg]">
+            <h2 class="section-heading text-4xl font-extrabold text-center mb-12 text-[--color-primary-navy]">About Me & Skills</h2>
+            <div class="max-w-6xl mx-auto space-y-12">
+                <!-- Background & Education (ACADEMICS SECTION) --><div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3 text-[--color-secondary-teal]">Academic & Professional Metrics</h3>
+                        <p class="text-gray-600 mb-4">
+                            My focus on Electronics and Communication Engineering is supported by a strong academic foundation. My professional journey began with targeted internships to ground theoretical knowledge in practical **VLSI design and verification methodologies**.
+                        </p>
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-center space-x-4 bg-white p-3 rounded-lg shadow-md border-l-4 border-[--color-primary-navy]">
+                                <span data-lucide="award" class="w-6 h-6 text-[--color-secondary-teal]"></span>
+                                <div>
+                                    <p class="font-bold text-lg text-[--color-primary-navy]">7.76 CGPA</p>
+                                    <p class="text-sm text-gray-500">B.E. ECE (Chettinad College)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 bg-white p-3 rounded-lg shadow-md border-l-4 border-[--color-secondary-teal]">
+                                <span data-lucide="book-open-check" class="w-6 h-6 text-[--color-primary-navy]"></span>
+                                <div>
+                                    <p class="font-bold text-lg text-[--color-primary-navy]">SSLC: 96% | HSC: 67%</p>
+                                    <p class="text-sm text-gray-500">Higher Secondary Academic Excellence</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Technical Skills Grid --><div class="bg-white p-6 rounded-xl border border-gray-200 shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-4 text-[--color-primary-navy]">Technical Expertise</h3>
+                        <div class="grid grid-cols-2 gap-4 text-sm font-medium">
+                            <div class="flex items-center space-x-2 text-gray-700"><span data-lucide="code" class="w-5 h-5 text-[--color-secondary-teal]"></span><span>**HDLs:** Verilog, SystemVerilog</span></div>
+                            <div class="flex items-center space-x-2 text-gray-700"><span data-lucide="check-circle" class="w-5 h-5 text-[--color-secondary-teal]"></span><span>**Verification:** Test Bench, FSM Design</span></div>
+                            <div class="flex items-center space-x-2 text-gray-700"><span data-lucide="box" class="w-5 h-5 text-[--color-secondary-teal]"></span><span>**Embedded:** Arduino, STM32Cube</span></div>
+                            <div class="flex items-center space-x-2 text-gray-700"><span data-lucide="settings" class="w-5 h-5 text-[--color-secondary-teal]"></span><span>**Tools:** MATLAB, Xilinx, EDA Playground</span></div>
+                            <div class="flex items-center space-x-2 text-gray-700"><span data-lucide="network" class="w-5 h-5 text-[--color-secondary-teal]"></span><span>**Networking:** Cisco Packet Tracer</span></div>
+                            <div class="flex items-center space-x-2 text-gray-700"><span data-lucide="terminal" class="w-5 h-5 text-[--color-secondary-teal]"></span><span>**Programming:** C, Python</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PROJECTS SECTION: Functional Modules --><section id="projects" class="py-20 px-4">
+            <h2 class="section-heading text-4xl font-extrabold text-center mb-12 text-[--color-primary-navy]">Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+                <!-- Project 1: Vedic Multiplier --><div class="project-card bg-white p-6 rounded-xl border-t-4 border-[--color-secondary-teal] shadow-lg">
+                    <img src="https://placehold.co/80x80/001F54/FFFFFF/png?text=VLSI" alt="Vedic Multiplier Icon" class="w-12 h-12 mb-3 rounded-full bg-gray-100 p-2">
+                    <h3 class="text-xl font-bold mb-2 text-[--color-primary-navy]">High-Performance Vedic Multiplier</h3>
+                    <p class="text-gray-500 mb-4">VLSI optimization project using **Verilog/System Verilog** to achieve significant reductions in power consumption and increase computational speed.</p>
+                    <a href="#project-vedic" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline view-project-link">
+                        <span>View Details</span> <span data-lucide="arrow-right" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+                <!-- Project 2: Neuromorphic Computing --><div class="project-card bg-white p-6 rounded-xl border-t-4 border-[--color-secondary-teal] shadow-lg">
+                    <img src="https://placehold.co/80x80/00A896/FFFFFF/png?text=SNN" alt="Neuromorphic Icon" class="w-12 h-12 mb-3 rounded-full bg-gray-100 p-2">
+                    <h3 class="text-xl font-bold mb-2 text-[--color-primary-navy]">Neuromorphic Computing for Wearables</h3>
+                    <p class="text-gray-500 mb-4">Designed a low-power neuromorphic circuit using **Verilog** for analog-to-digital spike encoding, integrated with an **SNN** for real-time monitoring.</p>
+                    <a href="#project-neuromorphic" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline view-project-link">
+                        <span>View Details</span> <span data-lucide="arrow-right" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+                <!-- Project 3: Vending Machine Controller --><div class="project-card bg-white p-6 rounded-xl border-t-4 border-[--color-secondary-teal] shadow-lg">
+                    <img src="https://placehold.co/80x80/001F54/FFFFFF/png?text=FSM" alt="Vending FSM Icon" class="w-12 h-12 mb-3 rounded-full bg-gray-100 p-2">
+                    <h3 class="text-xl font-bold mb-2 text-[--color-primary-navy]">FSM Vending Machine Controller</h3>
+                    <p class="text-gray-500 mb-4">Designed and verified a dedicated **Finite State Machine** for a coin-operated system using **Verilog HDL**, complete with a functional test bench.</p>
+                    <a href="#project-vending" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline view-project-link">
+                        <span>View Details</span> <span data-lucide="arrow-right" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+                <!-- Project 4: Forest Cam Detection --><div class="project-card bg-white p-6 rounded-xl border-t-4 border-[--color-secondary-teal] shadow-lg">
+                    <img src="https://placehold.co/80x80/00A896/FFFFFF/png?text=AI" alt="Forest Cam Icon" class="w-12 h-12 mb-3 rounded-full bg-gray-100 p-2">
+                    <h3 class="text-xl font-bold mb-2 text-[--color-primary-navy]">Forest Cam Detection (AI/ML)</h3>
+                    <p class="text-gray-500 mb-4">AI/ML application for **animal image detection** in hillside areas, providing trained model identification and immediate alert messages for community safety.</p>
+                    <a href="#project-forestcam" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline view-project-link">
+                        <span>View Details</span> <span data-lucide="arrow-right" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+                <!-- Project 5: Wireless Notice Board --><div class="project-card bg-white p-6 rounded-xl border-t-4 border-[--color-secondary-teal] shadow-lg">
+                    <img src="https://placehold.co/80x80/001F54/FFFFFF/png?text=EMB" alt="Notice Board Icon" class="w-12 h-12 mb-3 rounded-full bg-gray-100 p-2">
+                    <h3 class="text-xl font-bold mb-2 text-[--color-primary-navy]">Wireless Notice Board (Embedded)</h3>
+                    <p class="text-gray-500 mb-4">Developed an embedded communication system with an **LCD and Bluetooth module** for real-time, wireless message projection in public spaces.</p>
+                    <a href="#project-noticeboard" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline view-project-link">
+                        <span>View Details</span> <span data-lucide="arrow-right" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+                <!-- Call to Action Card --><div class="bg-[--color-primary-navy] p-6 rounded-xl shadow-2xl flex flex-col justify-center items-center text-center">
+                    <h3 class="text-2xl font-bold text-white mb-4">Ready to Discuss a Project?</h3>
+                    <p class="text-gray-300 mb-6">Let's connect your requirements to an efficient hardware solution.</p>
+                    <a href="#contact" class="px-6 py-3 bg-[--color-secondary-teal] text-white font-bold rounded-lg hover:bg-white hover:text-[--color-primary-navy] transition duration-300">
+                        Initiate Contact
+                    </a>
+                </div>
+            </div>
+
+            <!-- Detailed Project Sections (Hidden by default, shown on link click) --><div id="detailed-projects-container" class="max-w-4xl mx-auto mt-20">
+                <!-- Project 1 Detailed View --><div id="project-vedic" class="detailed-project">
+                    <button class="float-right text-gray-500 hover:text-gray-800" onclick="hideAllDetailedProjects()"><span data-lucide="x-circle" class="w-6 h-6"></span></button>
+                    <h3 class="text-3xl font-bold mb-4 text-[--color-primary-navy]">High-Performance Vedic Multiplier</h3>
+                    <img src="https://placehold.co/800x400/001F54/FFFFFF?text=PLACEHOLDER%3A+Vedic+Multiplier+Block+Diagram" alt="Vedic Multiplier Block Diagram" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        This project focused on optimizing digital multiplication operations, critical for high-speed processors and DSP applications. By designing and implementing a Vedic multiplier in **Verilog/System Verilog**, we effectively replaced conventional hybrid full adders. This architectural change led to significant reductions in power consumption and boosted computational speed, showcasing an advanced understanding of low-power VLSI design techniques. The core challenge was balancing power efficiency with maximum throughput.
+                    </p>
+                    <h4 class="text-xl font-semibold mb-2 text-[--color-secondary-teal]">Technologies Used:</h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>**Verilog/System Verilog:** For RTL design and behavioral modeling.</li>
+                        <li>**EDA Tools:** Xilinx ISE/Vivado for synthesis and simulation.</li>
+                        <li>**Key Concepts:** High-speed arithmetic, parallel processing, power optimization.</li>
+                    </ul>
+                    <img src="https://placehold.co/600x300/00A896/FFFFFF?text=PLACEHOLDER%3A+Vedic+Multiplier+Simulation+Waveform" alt="Vedic Multiplier Simulation Waveform" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        *Image: Simulation waveform demonstrating the speed improvement.*
+                    </p>
+                    <a href="#projects" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline" onclick="hideAllDetailedProjects()">
+                        <span>Back to Projects</span> <span data-lucide="arrow-left" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+                <!-- Project 2 Detailed View --><div id="project-neuromorphic" class="detailed-project">
+                    <button class="float-right text-gray-500 hover:text-gray-800" onclick="hideAllDetailedProjects()"><span data-lucide="x-circle" class="w-6 h-6"></span></button>
+                    <h3 class="text-3xl font-bold mb-4 text-[--color-primary-navy]">Neuromorphic Computing for Powerless Medical Sensors</h3>
+                    <img src="https://placehold.co/800x400/001F54/FFFFFF?text=PLACEHOLDER%3A+Neuromorphic+Circuit+Schematic" alt="Neuromorphic Circuit Diagram" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        This innovative project explored neuromorphic principles for ultra-low-power medical devices. I designed and implemented a circuit using **Verilog** that converts analog signals from medical sensors (like ECG, EEG) into digital spikes. This spiking data is then fed into a **Spiking Neural Network (SNN)** for real-time, adaptive monitoring. The primary goal was to create self-sustaining, powerless wearables, enabling continuous health monitoring without frequent battery changes.
+                    </p>
+                    <h4 class="text-xl font-semibold mb-2 text-[--color-secondary-teal]">Technologies Used:</h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>**Verilog:** For comparator and spike encoder logic.</li>
+                        <li>**Conceptual SNN Integration:** For pattern recognition.</li>
+                        <li>**Key Concepts:** Analog-to-digital conversion, event-driven computing, biomedical signal processing.</li>
+                    </ul>
+                     <img src="https://placehold.co/600x300/00A896/FFFFFF?text=PLACEHOLDER%3A+Spike+Encoding+Output+Graph" alt="Spike Encoding Output" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        *Image: Example of analog input converted to digital spikes.*
+                    </p>
+                    <a href="#projects" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline" onclick="hideAllDetailedProjects()">
+                        <span>Back to Projects</span> <span data-lucide="arrow-left" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+                 <!-- Project 3 Detailed View --><div id="project-vending" class="detailed-project">
+                    <button class="float-right text-gray-500 hover:text-gray-800" onclick="hideAllDetailedProjects()"><span data-lucide="x-circle" class="w-6 h-6"></span></button>
+                    <h3 class="text-3xl font-bold mb-4 text-[--color-primary-navy]">FSM Vending Machine Controller</h3>
+                    <img src="https://placehold.co/800x400/001F54/FFFFFF?text=PLACEHOLDER%3A+FSM+State+Diagram" alt="FSM State Diagram" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        This project involved the complete design and rigorous verification of a state machine for a coin-operated electronic newspaper vending machine. Using **Verilog HDL**, I implemented a Finite State Machine (FSM) capable of accepting nickels and dimes, accurately tracking the deposited amount, and dispensing a newspaper upon reaching the required 15 cents. A critical part of the project was developing a comprehensive **test bench** to verify every state transition and input condition, ensuring robust and error-free operation.
+                    </p>
+                    <h4 class="text-xl font-semibold mb-2 text-[--color-secondary-teal]">Technologies Used:</h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>**Verilog HDL:** For FSM implementation and combinational/sequential logic.</li>
+                        <li>**Test Bench Development:** For thorough functional verification.</li>
+                        <li>**Key Concepts:** Digital logic design, state machines, hardware testing.</li>
+                    </ul>
+                     <img src="https://placehold.co/600x300/00A896/FFFFFF?text=PLACEHOLDER%3A+Vending+Machine+Testbench+Results" alt="Vending Machine Testbench+Results" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        *Image: Testbench output showing successful coin input and dispense sequence.*
+                    </p>
+                    <a href="#projects" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline" onclick="hideAllDetailedProjects()">
+                        <span>Back to Projects</span> <span data-lucide="arrow-left" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+                <!-- Project 4 Detailed View --><div id="project-forestcam" class="detailed-project">
+                    <button class="float-right text-gray-500 hover:text-gray-800" onclick="hideAllDetailedProjects()"><span data-lucide="x-circle" class="w-6 h-6"></span></button>
+                    <h3 class="text-3xl font-bold mb-4 text-[--color-primary-navy]">Forest Cam Detection (AI/ML Application)</h3>
+                    <img src="https://placehold.co/800x400/001F54/FFFFFF?text=PLACEHOLDER%3A+ML+Model+Accuracy+Chart" alt="Forest Cam Setup" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        This project addresses a critical safety need for communities living in hillside and forest-adjacent areas. It involves deploying a **Forest Cam Detection system** that leverages **AI/ML models** to automatically detect and identify various animal images captured by cameras. The trained model not only classifies the animal but also triggers immediate alert messages to residents, providing crucial early warnings for potential wildlife encounters. This system enhances security and peace of mind for hillside living populations.
+                    </p>
+                    <h4 class="text-xl font-semibold mb-2 text-[--color-secondary-teal]">Technologies Used:</h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>**Machine Learning/Deep Learning Frameworks:** (e.g., TensorFlow/PyTorch for model training).</li>
+                        <li>**Image Processing Libraries:** (e.g., OpenCV for real-time analysis).</li>
+                        <li>**Hardware (Conceptual):** Microcontroller/Raspberry Pi for deployment, camera modules.</li>
+                        <li>**Key Concepts:** Object detection, image classification, embedded AI, community safety systems.</li>
+                    </ul>
+                     <img src="https://placehold.co/600x300/00A896/FFFFFF?text=PLACEHOLDER%3A+Sample+Detection+Screenshot" alt="Animal Detection+Screenshot" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        *Image: Screenshot of the detection system identifying an animal and generating an alert.*
+                    </p>
+                    <a href="#projects" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline" onclick="hideAllDetailedProjects()">
+                        <span>Back to Projects</span> <span data-lucide="arrow-left" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+                <!-- Project 5 Detailed View --><div id="project-noticeboard" class="detailed-project">
+                    <button class="float-right text-gray-500 hover:text-gray-800" onclick="hideAllDetailedProjects()"><span data-lucide="x-circle" class="w-6 h-6"></span></button>
+                    <h3 class="text-3xl font-bold mb-4 text-[--color-primary-navy]">Wireless Notice Board (Embedded)</h3>
+                    <img src="https://placehold.co/800x400/001F54/FFFFFF?text=PLACEHOLDER%3A+Hardware+Block+Diagram" alt="Wireless Notice Board Hardware" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        This project focused on modernizing information dissemination in public and organizational settings. I developed a **wireless notice board system** featuring an **LCD display** seamlessly connected to a **Bluetooth module**. This setup allows users to wirelessly project notices and updates from any Bluetooth-enabled device (smartphone, PC) directly to the display. This eliminates the need for manual updates, providing an efficient, real-time communication solution ideal for schools, offices, and public announcement areas.
+                    </p>
+                    <h4 class="text-xl font-semibold mb-2 text-[--color-secondary-teal]">Technologies Used:</h4>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>**Microcontroller (e.g., Arduino/ESP32):** For controlling the LCD and Bluetooth module.</li>
+                        <li>**LCD Display:** For visual output.</li>
+                        <li>**Bluetooth Module:** For wireless communication.</li>
+                        <li>**Key Concepts:** Embedded systems, wireless communication, real-time displays.</li>
+                    </ul>
+                     <img src="https://placehold.co/600x300/00A896/FFFFFF?text=PLACEHOLDER%3A+System+Architecture+Diagram" alt="Notice Board App Interface" class="project-image">
+                    <p class="text-gray-700 mb-4">
+                        *Image: Conceptual smartphone app interface for sending notices.*
+                    </p>
+                    <a href="#projects" class="text-[--color-secondary-teal] font-semibold flex items-center space-x-1 hover:underline" onclick="hideAllDetailedProjects()">
+                        <span>Back to Projects</span> <span data-lucide="arrow-left" class="w-4 h-4"></span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. CERTIFICATIONS & ACHIEVEMENTS --><section id="certs" class="py-20 px-4">
+            <h2 class="section-heading text-4xl font-extrabold text-center mb-12 text-[--color-primary-navy]">Certifications & Achievements</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                
+                <!-- Cert 1: VLSI Design & Verification (Taras) -->
+                <div class="bg-[--color-section-bg] p-5 rounded-xl shadow-lg border-t-4 border-[--color-secondary-teal] transition hover:shadow-xl">
+                    <span data-lucide="graduation-cap" class="w-6 h-6 text-[--color-primary-navy] mb-2"></span>
+                    <h3 class="font-bold text-lg text-[--color-primary-navy]">VLSI Design & Verification Training</h3>
+                    <p class="text-sm text-gray-600">Certification Training: 2024-08-12 to 2024-08-17</p>
+                    <p class="text-xs text-[--color-secondary-teal] mt-1">Taras Systems and Solutions</p>
+                </div>
+
+                <!-- Cert 2: Network Technician Career Path (Cisco) -->
+                <div class="bg-[--color-section-bg] p-5 rounded-xl shadow-lg border-t-4 border-[--color-secondary-teal] transition hover:shadow-xl">
+                    <span data-lucide="network" class="w-6 h-6 text-[--color-primary-navy] mb-2"></span>
+                    <h3 class="font-bold text-lg text-[--color-primary-navy]">Network Technician Career Path</h3>
+                    <p class="text-sm text-gray-600">Completion Date: November 02, 2024</p>
+                    <p class="text-xs text-[--color-secondary-teal] mt-1">Cisco Networking Academy</p>
+                </div>
+
+                <!-- Achievement 1: Mini Project Prize -->
+                <div class="bg-[--color-section-bg] p-5 rounded-xl shadow-lg border-t-4 border-[--color-primary-navy] transition hover:shadow-xl">
+                    <span data-lucide="medal" class="w-6 h-6 text-[--color-secondary-teal] mb-2"></span>
+                    <h3 class="font-bold text-lg text-[--color-primary-navy]">Third Prize - Mini Project Expo</h3>
+                    <p class="text-sm text-gray-600">Intracollege Mini Expo 2024</p>
+                    <p class="text-xs text-gray-500 mt-1">Project: Vedic Multiplier</p>
+                </div>
+
+                <!-- Achievement 2: Paper Presentation (SRISHTI) -->
+                <div class="bg-[--color-section-bg] p-5 rounded-xl shadow-lg border-t-4 border-[--color-primary-navy] transition hover:shadow-xl">
+                    <span data-lucide="file-text" class="w-6 h-6 text-[--color-secondary-teal] mb-2"></span>
+                    <h3 class="font-bold text-lg text-[--color-primary-navy]">National Level Paper Presentation</h3>
+                    <p class="text-sm text-gray-600">SRISHTI Symposium 2K23</p>
+                    <p class="text-xs text-gray-500 mt-1">PSG College of Technology, Coimbatore</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 5. CONTACT SECTION: Establish Connection --><section id="contact" class="py-20 px-4 bg-[--color-section-bg]">
+            <h2 class="section-heading text-4xl font-extrabold text-center mb-12 text-[--color-primary-navy]">Connect With Me</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-2xl border border-gray-100">
+                <p class="text-center text-xl mb-8 text-gray-600">
+                    Use the form below or connect directly via email/phone for inquiries or collaboration opportunities.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-10 text-center">
+                    <!-- Email --><div class="bg-gray-50 p-4 rounded-lg border-b-4 border-[--color-secondary-teal] shadow">
+                        <span data-lucide="mail" class="w-6 h-6 mx-auto text-[--color-primary-navy] mb-2"></span>
+                        <p class="text-sm text-gray-500">Email</p>
+                        <a href="mailto:thanveera012@gmail.com" class="font-semibold text-[--color-primary-navy] hover:text-[--color-secondary-teal]">thanveera012@gmail.com</a>
+                    </div>
+                    <!-- Phone --><div class="bg-gray-50 p-4 rounded-lg border-b-4 border-[--color-secondary-teal] shadow">
+                        <span data-lucide="phone" class="w-6 h-6 mx-auto text-[--color-primary-navy] mb-2"></span>
+                        <p class="text-sm text-gray-500">Phone</p>
+                        <a href="tel:+916385884053" class="font-semibold text-[--color-primary-navy] hover:text-[--color-secondary-teal]">+91 63858 84053</a>
+                    </div>
+                    <!-- LinkedIn --><div class="bg-gray-50 p-4 rounded-lg border-b-4 border-[--color-secondary-teal] shadow">
+                        <span data-lucide="linkedin" class="w-6 h-6 mx-auto text-[--color-primary-navy] mb-2"></span>
+                        <p class="text-sm text-gray-500">LinkedIn</p>
+                        <a href="https://www.linkedin.com/in/thanveer-ahamed-n-ab2224347" target="_blank" class="font-semibold text-[--color-primary-navy] hover:text-[--color-secondary-teal]">Connect Here</a>
+                    </div>
+                </div>
+
+                <!-- Contact Form --><form class="space-y-4">
+                    <input type="text" placeholder="Your Name" class="w-full p-3 bg-white border border-gray-300 rounded-lg focus:border-[--color-secondary-teal] focus:ring-1 focus:ring-[--color-secondary-teal]" required>
+                    <input type="email" placeholder="Your Email" class="w-full p-3 bg-white border border-gray-300 rounded-lg focus:border-[--color-secondary-teal] focus:ring-1 focus:ring-[--color-secondary-teal]" required>
+                    <textarea placeholder="Your Inquiry" rows="4" class="w-full p-3 bg-white border border-gray-300 rounded-lg focus:border-[--color-secondary-teal] focus:ring-1 focus:ring-[--color-secondary-teal]" required></textarea>
+                    <button type="submit" class="cta-primary w-full text-white font-bold py-3 rounded-lg text-lg shadow-lg">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer --><footer class="mt-20 py-6 bg-[--color-primary-navy]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-300">
+            <p>&copy; 2025 Thanveer Ahamed N. All rights reserved. | Built with a focus on UX and Performance.</p>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons & Project Details Script --><script>
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const viewProjectLinks = document.querySelectorAll('.view-project-link');
+            const detailedProjectsContainer = document.getElementById('detailed-projects-container');
+            const allDetailedProjects = document.querySelectorAll('.detailed-project');
+
+            function hideAllDetailedProjects() {
+                allDetailedProjects.forEach(project => {
+                    project.classList.remove('active');
+                    project.style.display = 'none'; // Ensure it's hidden from layout
+                });
+                detailedProjectsContainer.style.display = 'none'; // Hide the container itself
+            }
+
+            // Initially hide all detailed project sections
+            hideAllDetailedProjects();
+
+            viewProjectLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default anchor jump
+
+                    const targetId = link.getAttribute('href').substring(1); // Get the ID like 'project-vedic'
+                    const targetProject = document.getElementById(targetId);
+
+                    if (targetProject) {
+                        hideAllDetailedProjects(); // Hide any currently active project
+                        detailedProjectsContainer.style.display = 'block'; // Show the container
+                        targetProject.classList.add('active');
+                        targetProject.style.display = 'block'; // Show the specific project
+                        targetProject.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll to it
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
